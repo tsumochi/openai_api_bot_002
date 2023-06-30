@@ -40,12 +40,12 @@ def communicate(Version):
 st.title("My AI Assistant For AWS")
 st.write("ChatGPT APIを使ったチャットボットです。")
 
-st.radio('Version',('3.5','4'))
-st.write(Version)
+version = st.radio('Version',('3.5','4'))
+st.write(version)
 #####
 user_input_id = st.text_input("idを入力してください。", key="user_input_id")
 if user_input_id in "tsumchi":
-    user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate(Version))
+    user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate(version))
 else:
     st.write("idが正しくありません！")
 ####
