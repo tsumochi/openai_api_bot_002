@@ -4,6 +4,11 @@ import openai
 
 MODEL_3 = "gpt-3.5-turbo"
 MODEL_4 = "gpt-4-0613"
+VERSION = "3.5"
+GDP_MODEL = {
+    "3.5": "gpt-3.5-turbo",
+    "4":  "gpt-4-0613",
+}
 
 # Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
 openai.api_key = st.secrets.OpenAIAPI.openai_api_key
@@ -15,10 +20,9 @@ if "messages" not in st.session_state:
         ]
 
 # チャットボットとやりとりする関数
-def communicate(version):
-    selected_model = MODEL_3
-    #if version == 4:
-    #    selected_model = MODEL_4
+def communicate():
+    selected_model = GDP_MODEL[VERSION]
+    print("VERSION=",VERSION)
 
     
     messages = st.session_state["messages"]
@@ -41,12 +45,13 @@ def communicate(version):
 st.title("My AI Assistant For AWS")
 st.write("ChatGPT APIを使ったチャットボットです。")
 
-version = st.radio('Version',('3.5','4'))
+version = st.radio("Version",("3.5","4"))
 st.write(version)
+
 #####
 #user_input_id = st.text_input("idを入力してください。", key="user_input_id")
 #if user_input_id in "tsumochi":
-#    user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate(version))
+#    user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 #    if st.session_state["messages"]:
 #        messages = st.session_state["messages"]
 #        for message in reversed(messages[1:]):  # 直近のメッセージを上に
