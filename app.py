@@ -41,6 +41,7 @@ st.title("My AI Assistant For AWS")
 st.write("ChatGPT APIを使ったチャットボットです。")
 
 st.radio('Version',('3.5','4'))
+st.write(Version)
 #####
 user_input_id = st.text_input("idを入力してください。", key="user_input_id")
 if user_input_id in "tsumchi":
