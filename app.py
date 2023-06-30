@@ -26,7 +26,7 @@ def communicate(version):
         selected_model = MODEL_4
     
     response = openai.ChatCompletion.create(
-        model=selected_model,
+        model="gpt-3.5-turbo",
         messages=messages
     )  
 
