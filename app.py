@@ -36,7 +36,16 @@ def communicate():
 st.title("My AI Assistant For AWS")
 st.write("ChatGPT 4 APIを使ったチャットボットです。")
 
-user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
+#####
+user_input_id = st.text_input("idを入力してください。", key="user_input_id")
+if user_input_id = "tsumchi":
+    user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
+else:
+    st.write("idが正しくありません！")
+####
+    
+
+# user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
 if st.session_state["messages"]:
     messages = st.session_state["messages"]
