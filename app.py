@@ -4,7 +4,7 @@ import openai
 
 
 VERSION = "4"
-GDP_MODEL = {
+GPT_MODEL = {
     "3.5": "gpt-3.5-turbo",
     "4":  "gpt-4",
 }
@@ -20,10 +20,11 @@ if "messages" not in st.session_state:
 
 # チャットボットとやりとりする関数
 def communicate():
-    selected_model = GDP_MODEL[VERSION]
-    print("VERSION=",VERSION)
+    st.session_state["version"]
+    selected_model = GPT_MODEL[st.session_state["version"]]
+    print("st.session_state["version"]=",st.session_state["version"])
     print("selected_model=",selected_model)
-    st.write(f"VERSION={VERSION}")
+    st.write(f"st.session_state["version"]={st.session_state['version']}")
     st.write(f"selected_model={selected_model}")
 
     
