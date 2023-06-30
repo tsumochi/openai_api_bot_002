@@ -22,9 +22,9 @@ if "messages" not in st.session_state:
 def communicate():
     st.session_state["version"]
     selected_model = GPT_MODEL[st.session_state["version"]]
-    print("st.session_state["version"]=",st.session_state["version"])
+    print("st.session_state['version']=",st.session_state["version"])
     print("selected_model=",selected_model)
-    st.write(f"st.session_state["version"]={st.session_state['version']}")
+    st.write(f"st.session_state['version']={st.session_state['version']}")
     st.write(f"selected_model={selected_model}")
 
     
