@@ -16,7 +16,7 @@ if "messages" not in st.session_state:
 
 # チャットボットとやりとりする関数
 def communicate():
-    #selected_model = MODEL_3
+    selected_model = MODEL_3
     #if version == 4:
     #    selected_model = MODEL_4
 
