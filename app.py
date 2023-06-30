@@ -46,14 +46,7 @@ st.write(version)
 user_input_id = st.text_input("idを入力してください。", key="user_input_id")
 if user_input_id in "tsumchi":
     user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate(version))
-else:
-    st.write("idが正しくありません！")
-####
-    
-
-# user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
-
-if st.session_state["messages"]:
+    if st.session_state["messages"]:
     messages = st.session_state["messages"]
 
     for message in reversed(messages[1:]):  # 直近のメッセージを上に
@@ -62,5 +55,22 @@ if st.session_state["messages"]:
             speaker="🤖"
 
         st.write(speaker + ": " + message["content"])
+else:
+    st.write("idが正しくありません！")
+####
+    
+
+# user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
+
+# if st.session_state["messages"]:
+#    messages = st.session_state["messages"]
+
+#    for message in reversed(messages[1:]):  # 直近のメッセージを上に
+#        speaker = "🙂"
+#        if message["role"]=="assistant":
+#            speaker="🤖"
+
+#        st.write(speaker + ": " + message["content"])
+
 st.title("usage")
 st.write("URL: https://platform.openai.com/account/usage")
