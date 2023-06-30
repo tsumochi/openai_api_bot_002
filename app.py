@@ -15,10 +15,10 @@ if "messages" not in st.session_state:
         ]
 
 # チャットボットとやりとりする関数
-def communicate(version):
-    selected_model = MODEL_3
-    if version == 4:
-        selected_model = MODEL_4
+def communicate():
+    #selected_model = MODEL_3
+    #if version == 4:
+    #    selected_model = MODEL_4
 
     
     messages = st.session_state["messages"]
@@ -59,7 +59,7 @@ st.write(version)
 ####
     
 
-user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate(version))
+user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 if st.session_state["messages"]:
    messages = st.session_state["messages"]
    for message in reversed(messages[1:]):  # 直近のメッセージを上に
