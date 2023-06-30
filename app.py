@@ -7,7 +7,7 @@ MODEL_4 = "gpt-4-0613"
 VERSION = "3.5"
 GDP_MODEL = {
     "3.5": "gpt-3.5-turbo",
-    "4":  "gpt-4-0613",
+    "4":  "gpt-4",
 }
 
 # Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
