@@ -47,3 +47,5 @@ if st.session_state["messages"]:
             speaker="🤖"
 
         st.write(speaker + ": " + message["content"])
+st.tite("usage")
+st.write("URL: https://platform.openai.com/account/usage")
