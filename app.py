@@ -47,14 +47,14 @@ user_input_id = st.text_input("idを入力してください。", key="user_inpu
 if user_input_id in "tsumchi":
     user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate(version))
     if st.session_state["messages"]:
-    messages = st.session_state["messages"]
+        messages = st.session_state["messages"]
 
-    for message in reversed(messages[1:]):  # 直近のメッセージを上に
-        speaker = "🙂"
-        if message["role"]=="assistant":
-            speaker="🤖"
+        for message in reversed(messages[1:]):  # 直近のメッセージを上に
+            speaker = "🙂"
+            if message["role"]=="assistant":
+                speaker="🤖"
 
-        st.write(speaker + ": " + message["content"])
+            st.write(speaker + ": " + message["content"])
 else:
     st.write("idが正しくありません！")
 ####
