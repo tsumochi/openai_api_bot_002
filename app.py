@@ -20,7 +20,6 @@ if "messages" not in st.session_state:
 
 # チャットボットとやりとりする関数
 def communicate():
-    st.session_state["version"]
     selected_model = GPT_MODEL[st.session_state["version"]]
     print("st.session_state['version']=",st.session_state["version"])
     print("selected_model=",selected_model)
