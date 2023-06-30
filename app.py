@@ -38,7 +38,7 @@ st.write("ChatGPT 4 APIを使ったチャットボットです。")
 
 #####
 user_input_id = st.text_input("idを入力してください。", key="user_input_id")
-if user_input_id = "tsumchi":
+if user_input_id in "tsumchi":
     user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 else:
     st.write("idが正しくありません！")
