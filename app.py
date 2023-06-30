@@ -15,7 +15,7 @@ if "messages" not in st.session_state:
         ]
 
 # チャットボットとやりとりする関数
-def communicate():
+def communicate(version):
     selected_model = MODEL_3
     #if version == 4:
     #    selected_model = MODEL_4
@@ -46,7 +46,7 @@ st.write(version)
 #####
 #user_input_id = st.text_input("idを入力してください。", key="user_input_id")
 #if user_input_id in "tsumochi":
-#    user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
+#    user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate(version))
 #    if st.session_state["messages"]:
 #        messages = st.session_state["messages"]
 #        for message in reversed(messages[1:]):  # 直近のメッセージを上に
