@@ -15,18 +15,18 @@ if "messages" not in st.session_state:
         ]
 
 # チャットボットとやりとりする関数
-def communicate(Version):
+def communicate(version):
     messages = st.session_state["messages"]
 
     user_message = {"role": "user", "content": st.session_state["user_input"]}
     messages.append(user_message)
 
-    model_selected = MODEL_3
-    if Version == 4:
-        model_selected = MODEL_4
+    selected_model = MODEL_3
+    if version == 4:
+        selected_model = MODEL_4
     
     response = openai.ChatCompletion.create(
-        model=model_selected,
+        model=selected_model,
         messages=messages
     )  
 
@@ -43,34 +43,29 @@ st.write("ChatGPT APIを使ったチャットボットです。")
 version = st.radio('Version',('3.5','4'))
 st.write(version)
 #####
-user_input_id = st.text_input("idを入力してください。", key="user_input_id")
-if user_input_id in "tsumchi":
-    user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate(version))
-    if st.session_state["messages"]:
-        messages = st.session_state["messages"]
-
-        for message in reversed(messages[1:]):  # 直近のメッセージを上に
-            speaker = "🙂"
-            if message["role"]=="assistant":
-                speaker="🤖"
-
-            st.write(speaker + ": " + message["content"])
-else:
-    st.write("idが正しくありません！")
+#user_input_id = st.text_input("idを入力してください。", key="user_input_id")
+#if user_input_id in "tsumochi":
+#    user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate(version))
+#    if st.session_state["messages"]:
+#        messages = st.session_state["messages"]
+#        for message in reversed(messages[1:]):  # 直近のメッセージを上に
+#            speaker = "🙂"
+#            if message["role"]=="assistant":
+#                speaker="🤖"
+#            st.write(speaker + ": " + message["content"])
+#else:
+#    st.write("idが正しくありません！")
 ####
     
 
-# user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
-
-# if st.session_state["messages"]:
-#    messages = st.session_state["messages"]
-
-#    for message in reversed(messages[1:]):  # 直近のメッセージを上に
-#        speaker = "🙂"
-#        if message["role"]=="assistant":
-#            speaker="🤖"
-
-#        st.write(speaker + ": " + message["content"])
+user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
+if st.session_state["messages"]:
+   messages = st.session_state["messages"]
+   for message in reversed(messages[1:]):  # 直近のメッセージを上に
+       speaker = "🙂"
+       if message["role"]=="assistant":
+           speaker="🤖"
+       st.write(speaker + ": " + message["content"])
 
 st.title("usage")
 st.write("URL: https://platform.openai.com/account/usage")
