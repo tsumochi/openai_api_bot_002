@@ -22,7 +22,9 @@ if "messages" not in st.session_state:
 def communicate():
     selected_model = GDP_MODEL[VERSION]
     print("VERSION=",VERSION)
+    print("selected_model=",selected_model)
     st.write(f"VERSION={VERSION}")
+    st.write(f"selected_model={selected_model}")
 
     
     messages = st.session_state["messages"]
