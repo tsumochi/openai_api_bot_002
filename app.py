@@ -2,6 +2,9 @@
 import streamlit as st
 import openai
 
+MODEL_3 = "gpt-3.5-turbo"
+MODEL_4 = "gpt-4-0613"
+
 # Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
 openai.api_key = st.secrets.OpenAIAPI.openai_api_key
 
@@ -12,17 +15,18 @@ if "messages" not in st.session_state:
         ]
 
 # チャットボットとやりとりする関数
-def communicate():
+def communicate(Version):
     messages = st.session_state["messages"]
 
     user_message = {"role": "user", "content": st.session_state["user_input"]}
     messages.append(user_message)
 
-    # model="gpt-3.5-turbo"
-    # model="gpt-4-0613"
+    model_selected = MODEL_3
+    if Version == 4:
+        model_selected = MODEL_4
     
     response = openai.ChatCompletion.create(
-        model="gpt-4-0613",
+        model=model_selected,
         messages=messages
     )  
 
@@ -34,12 +38,13 @@ def communicate():
 
 # ユーザーインターフェイスの構築
 st.title("My AI Assistant For AWS")
-st.write("ChatGPT 4 APIを使ったチャットボットです。")
+st.write("ChatGPT APIを使ったチャットボットです。")
 
+st.radio('Version',('3.5','4'))
 #####
 user_input_id = st.text_input("idを入力してください。", key="user_input_id")
 if user_input_id in "tsumchi":
-    user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
+    user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate(Version))
 else:
     st.write("idが正しくありません！")
 ####
