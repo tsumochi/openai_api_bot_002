@@ -2,9 +2,8 @@
 import streamlit as st
 import openai
 
-MODEL_3 = "gpt-3.5-turbo"
-MODEL_4 = "gpt-4-0613"
-VERSION = "3.5"
+
+VERSION = "4"
 GDP_MODEL = {
     "3.5": "gpt-3.5-turbo",
     "4":  "gpt-4",
